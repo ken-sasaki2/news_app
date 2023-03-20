@@ -113,3 +113,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+// Data層でnews取得する
+
+// RepositoryとData層繋げる
+// ViewModelとRepository繋げる
+
+// Riverpod導入
+
+// Widget構築
