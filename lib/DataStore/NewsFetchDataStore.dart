@@ -10,10 +10,10 @@ abstract class NewsFetchDataStoreInterface {
 }
 
 class NewsFetchDataStore extends NewsFetchDataStoreInterface {
+  final dio = Dio();
 
   @override
   Future<NewsFetchResponseModels> fetchNewsData() async {
-    final dio = Dio();
     const url = 'https://newsapi.org/v2/top-headlines?country=jp&apiKey=$key';
 
     try {
