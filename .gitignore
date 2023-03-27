@@ -26,4 +26,4 @@ doc/api/
 .flutter-plugins
 .flutter-plugins-dependencies
 
-lib/Application/Secret.dart
+lib/application/secret.dart

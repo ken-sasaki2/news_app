@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:news_app/Application/Secret.dart';
-import 'package:news_app/Model/NewsFetchResponseModel.dart';
-import 'package:news_app/Model/NewsFetchResponseModels.dart';
+import 'package:news_app/application/secret.dart';
+import 'package:news_app/model/news_fetch_response_model.dart';
+import 'package:news_app/model/news_fetch_response_models.dart';
 
 abstract class NewsFetchDataStoreInterface {
   Future<NewsFetchResponseModels> fetchNewsData();
