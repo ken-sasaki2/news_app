@@ -1,5 +1,4 @@
 
-
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:news_app/application/secret.dart';
@@ -11,8 +10,9 @@ abstract class NewsFetchDataStoreInterface {
   Future<NewsFetchResponseModels> fetchNewsData();
 }
 
-class NewsFetchDataStore extends NewsFetchDataStoreInterface {
-  final dio = Dio();
+class NewsFetchDataStore implements NewsFetchDataStoreInterface {
+  final Dio dio;
+  NewsFetchDataStore({required this.dio});
 
   @override
   Future<NewsFetchResponseModels> fetchNewsData() async {
