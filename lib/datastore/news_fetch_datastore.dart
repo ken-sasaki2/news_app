@@ -14,7 +14,7 @@ class NewsFetchDataStore extends NewsFetchDataStoreInterface {
 
   @override
   Future<NewsFetchResponseModels> fetchNewsData() async {
-    const url = 'https://newsapi.org/v2/top-headlines?country=jp&apiKey=$key';
+    const url = 'https://newsapi.org/v2/top-headlines?country=jp&apiKey=';
 
     try {
       final response = await dio.get(url);
@@ -29,8 +29,23 @@ class NewsFetchDataStore extends NewsFetchDataStoreInterface {
       debugPrint('model:${models.datas[0].title}');
 
       return models;
-    } catch(error) {
+    } on Exception catch(exception) {
+      debugPrint('exception:$exception');
+
+      throw NewsApiException(exception.toString());
+    } on Error catch(error) {
+      debugPrint('error:$error');
+
       rethrow;
     }
   }
+}
+
+
+class NewsApiException implements Exception {
+  final String message;
+  const NewsApiException(this.message);
+
+  @override
+  String toString() => message;
 }
