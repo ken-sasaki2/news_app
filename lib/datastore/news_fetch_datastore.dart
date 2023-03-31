@@ -1,7 +1,9 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:news_app/application/secret.dart';
+import 'package:news_app/model/news_api_exception.dart';
 import 'package:news_app/model/news_fetch_response_model.dart';
 import 'package:news_app/model/news_fetch_response_models.dart';
 
@@ -29,8 +31,11 @@ class NewsFetchDataStore extends NewsFetchDataStoreInterface {
       debugPrint('model:${models.datas[0].title}');
 
       return models;
-    } catch(error) {
-      rethrow;
+    } on Exception catch(exception) {
+      debugPrint('Fail fetchNewsData.');
+      throw NewsApiException(exception.toString());
+    } finally {
+      debugPrint('End fetchNewsData.');
     }
   }
 }
