@@ -35,7 +35,7 @@ class NewsFetchDataStore implements NewsFetchDataStoreInterface {
       debugPrint('Fail fetchNewsData.');
       throw NewsApiException(exception.toString());
     } finally {
-      debugPrint('End fetchNewsData.');
+      debugPrint('End fetchNewsData from datastore.');
     }
   }
 }
