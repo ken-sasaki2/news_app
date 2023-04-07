@@ -1,6 +1,6 @@
 
 import 'package:news_app/model/news_fetch_response_models.dart';
-import 'package:news_app/repository/news_repository.dart';
+import 'package:news_app/repository/news_repository_interface.dart';
 
 class MockNewsRepository implements NewsRepositoryInterface {
   var isFetchNewsDataCalled = false;

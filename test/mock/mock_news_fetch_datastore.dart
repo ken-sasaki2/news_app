@@ -1,5 +1,5 @@
 
-import 'package:news_app/datastore/news_fetch_datastore.dart';
+import 'package:news_app/datastore/news_fetch_datastore_interface.dart';
 import 'package:news_app/model/news_fetch_response_models.dart';
 
 class MockNewsFetchDataStore implements NewsFetchDataStoreInterface {
