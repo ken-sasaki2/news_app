@@ -1,5 +1,5 @@
 
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/provider/news_repository_provider.dart';
 import 'package:news_app/view_model/news_view_model.dart';
 
