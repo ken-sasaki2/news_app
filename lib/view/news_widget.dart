@@ -15,10 +15,11 @@ class NewsWidget extends ConsumerWidget {
               title: const Text('News'),
             ),
             body: ref.watch(newsViewModelNotifierProvider).when(
-                data: (news) => ListView.builder(
-                    itemCount: news.datas.length,
+                data: (articles) => ListView.builder(
+                    itemCount: articles.datas.length,
                     itemBuilder: (_, index) {
-                      return newsItem(news.datas[index].title, news.datas[index].author);
+                      final news = articles.datas[index];
+                      return newsItem(news.title, news.author, news.url);
                     }),
                 error: (error, _) => const Center(
                     child: Text('通信エラー')
@@ -31,7 +32,7 @@ class NewsWidget extends ConsumerWidget {
     );
   }
 
-  Widget newsItem(String title, String author) {
+  Widget newsItem(String title, String author, String url) {
     return GestureDetector(
       child: Container(
           padding: const EdgeInsets.all(12.0),
@@ -53,7 +54,7 @@ class NewsWidget extends ConsumerWidget {
             ],
           )),
       onTap: () {
-        debugPrint("onTap called.");
+        debugPrint('url:$url');
       },
     );
   }
