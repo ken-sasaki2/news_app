@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/repository/news_repository_interface.dart';
 import '../model/news_fetch_response_models.dart';
 
-class NewsViewModel extends ChangeNotifier {
+class NewsViewModel {
   final NewsRepositoryInterface repository;
   NewsViewModel({required this.repository});
 
@@ -14,8 +14,6 @@ class NewsViewModel extends ChangeNotifier {
     try {
       final data = await repository.fetchNewsData();
       _news = data;
-
-      notifyListeners();
     } on Exception catch(exception) {
       // error handling.
     } finally {
