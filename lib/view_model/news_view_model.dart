@@ -15,7 +15,7 @@ class NewsViewModel {
       final data = await repository.fetchNewsData();
       _news = data;
     } on Exception catch(exception) {
-      // error handling.
+      rethrow;
     } finally {
       debugPrint('End fetchNewsData from view_model.');
     }
