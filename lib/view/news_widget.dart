@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/provider/news_view_model_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NewsWidget extends ConsumerWidget {
   const NewsWidget({super.key});
@@ -19,7 +21,7 @@ class NewsWidget extends ConsumerWidget {
                     itemCount: articles.datas.length,
                     itemBuilder: (_, index) {
                       final news = articles.datas[index];
-                      return newsItem(news.title, news.author, news.url);
+                      return _newsItem(news.title, news.author, news.url);
                     }),
                 error: (error, _) => const Center(
                     child: Text('通信エラー')
@@ -32,7 +34,7 @@ class NewsWidget extends ConsumerWidget {
     );
   }
 
-  Widget newsItem(String title, String author, String url) {
+  Widget _newsItem(String title, String author, String url) {
     return GestureDetector(
       child: Container(
           padding: const EdgeInsets.all(12.0),
@@ -55,7 +57,19 @@ class NewsWidget extends ConsumerWidget {
           )),
       onTap: () {
         debugPrint('url:$url');
+        _launchUrl(url);
       },
     );
   }
+
+  Future _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      debugPrint('Cloud not launch: $url');
+    }
+  }
 }
+
