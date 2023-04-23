@@ -8,7 +8,7 @@ class NewsWidget extends ConsumerWidget {
   const NewsWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {;
+  Widget build(BuildContext context, WidgetRef ref) {
 
     return MaterialApp(
         theme: ThemeData(primarySwatch: Colors.grey),
@@ -56,7 +56,6 @@ class NewsWidget extends ConsumerWidget {
             ],
           )),
       onTap: () {
-        debugPrint('url:$url');
         _launchUrl(url);
       },
     );
@@ -72,4 +71,3 @@ class NewsWidget extends ConsumerWidget {
     }
   }
 }
-
